@@ -21,7 +21,7 @@
         <div class="nav-btn" onclick="redirectMySets()">
           <p>My Sets</p>
         </div>
-        <div class="nav-btn">
+        <div class="nav-btn" onclick="redirectMyParts()">
           <p>My Parts</p>
         </div>
         <input type="text">
