@@ -12,20 +12,20 @@
   <main>
   <?php
 
-    $query = mysqli_query($connection, "SELECT categories.CatID, categories.Categoryname, parts.Partname, parts.PartID, colors.ColorID, colors.Colorname, inventory.Quantity FROM categories, sets, collection, parts, colors, inventory 
-    WHERE sets.SetID=collection.SetID AND sets.SetID=inventory.SetID AND sets.CatID=categories.CatID AND inventory.ItemID=parts.PartID AND inventory.ColorID=colors.ColorID ORDER BY PartID LIMIT 10");
+    $query = mysqli_query($connection, "SELECT parts.PartID, colors.ColorID, inventory.Quantity FROM sets, collection, parts, colors, inventory WHERE inventory.ItemID=parts.PartID AND sets.SetID=collection.SetID AND sets.SetID=inventory.SetID AND inventory.ColorID=colors.ColorID ORDER BY PartID");
 
     print("<table>\n<tr>");
-    print("<th>Picture</th><th>Quantity</th><th>Part Name</th> <th>Color</th><th>Category</th> <th>Part ID</th> </tr>\n");
+    print("<th>Quantity</th><th>Part ID</th> <th>Color ID</th></tr>\n");
 
+    
 
     while($row = mysqli_fetch_array($query)) {
       $quantity = $row['Quantity'];
-      $partName = $row['Partname'];
+      //$partName = $row['Partname'];
       $partID = $row['PartID'];
-      $colorName = $row['Colorname'];
+      //$colorName = $row['Colorname'];
       $colorID = $row['ColorID'];
-      $category = $row['Categoryname'];
+      //$category = $row['Categoryname'];
       
 
       /*$prefix = "http://www.itn.liu.se/~stegu76/img.bricklink.com/";
@@ -46,7 +46,7 @@
 
       $picSource = $prefix . $filename;*/
 
-      print("<tr><td><img src='' alt='Img missing'></td><td class='centerTd'>$quantity</td><td>$partName</td> <td class='centerTd'>$colorName</td><td class='centerTd'>$category</td><td class='centerTd'>$partID</td></tr>");
+      print("<tr><td class='centerTd'>$quantity</td><td>$partID</td> <td class='centerTd'>$colorID</td></tr>");
 
     }
 
