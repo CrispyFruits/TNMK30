@@ -12,7 +12,7 @@
   <main>
   <?php
 
-    $query = mysqli_query($connection, "SELECT parts.PartID, colors.ColorID, inventory.Quantity FROM sets, collection, parts, colors, inventory WHERE inventory.ItemID=parts.PartID AND sets.SetID=collection.SetID AND sets.SetID=inventory.SetID AND inventory.ColorID=colors.ColorID ORDER BY PartID");
+    $query = mysqli_query($connection, "SELECT parts.PartID, colors.ColorID, inventory.Quantity FROM sets, collection, parts, colors, inventory WHERE inventory.ItemID=parts.PartID AND sets.SetID=collection.SetID AND sets.SetID=inventory.SetID AND inventory.ColorID=colors.ColorID LIMIT 10");
 
     print("<table>\n<tr>");
     print("<th>Quantity</th><th>Part ID</th> <th>Color ID</th></tr>\n");
